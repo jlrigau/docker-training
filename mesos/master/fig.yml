@@ -1,0 +1,16 @@
+master:
+  image: redjack/mesos-master
+  command: mesos-master --work_dir=/mesos
+  net: host
+
+zk:
+  image: jplock/zookeeper
+  ports:
+    - "2181:2181"
+    - "2888:2888"
+    - "3888:3888"
+
+marathon:
+  image: mesosphere/marathon
+  command: --master {{master.host}}:5050 --zk zk://{{master.host}}:2181/marathon
+  net: host
