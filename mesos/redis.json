@@ -1,0 +1,17 @@
+{
+    "id": "redis",
+    "container": {
+        "type": "DOCKER",
+        "docker": {
+            "image": "redis",
+            "network": "BRIDGE",
+                "portMappings": [
+                    { "containerPort": 6379, "hostPort": 31000 }
+                ]
+        }
+    },
+    "cpus": 0.2,
+    "mem": 32.0,
+    "instances": 2,
+    "constraints": [["hostname", "UNIQUE"]]
+}
